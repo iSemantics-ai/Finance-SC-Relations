@@ -1,0 +1,134 @@
+base:
+  basic_columns:
+  - Label
+  - concept_class
+  - idx
+  - org_groups
+  - spans
+  entity_static_position: false
+  index_col: idx
+  log_level: INFO
+  main_relations:
+  - supplier
+  - customer
+  nlp: en_core_web_trf
+  random_state: 42
+data_split:
+  drop_issues: false
+  issues_name: LLM_ALL_ALIGNED_COMPLEX
+  issues_pruning: 0.3
+  neg_supply: true
+  num_positions: 0
+  output_dir: data/train/
+  random_choice: true
+  stratify_by:
+  - concept_class
+  - Label
+  val_size: 0.2
+evaluate:
+  dataset: data/raw/gold_eval_ensemble.json.out
+  entity_1: Filer
+  entity_2: Company
+  mutate: true
+  return_source: true
+  reverse: false
+  spans: Entities
+  target: Relationship
+  text_col: Sentence
+load_data:
+  dataset: data/raw/llm_aligned_0_1_huge_complex.json
+  entity_1: entity_1
+  entity_2: entity_2
+  output_dir: data/raw/relations_training_data.json
+  target: relation
+  text_col: sentence
+  
+sc_train:
+  base_model: nlpaueb/sec-bert-base
+  batch_size: 45
+  classes:
+  - 0
+  - 1
+  clip: false
+  cuda: '0'
+  dev_test_split: false
+  epochs: 4
+  features:
+  - orig_sents
+  learning_rate: 5.0e-05
+  load_pretrained: false
+  mutate: true
+  num_workers: 0
+  package_name: SupplyChainClassifier
+  pipeline_name: supplychain_classification_model
+  pipeline_save_file: supplychain_classification_model_output
+  seed: 1
+  target: Label
+  train_file: data/train/train.json
+  truncate: 512
+  valid_file: data/train/valid.json
+  wandb: false
+  warmup_smooth: 0.8
+  weight_decay: 0.001
+
+
+concept_train:
+  base_model: nlpaueb/sec-bert-shape
+  batch_size: 64
+  classes:
+    - revenue
+    - supply_chain
+    - agreement
+    - licensing_and_ip
+    - financial_statements
+    - real_estate
+  clip: false
+  cuda: '0'
+  dev_test_split: false
+  epochs: 10
+  features:
+  - orig_sents
+  learning_rate: 1.0e-05
+  load_pretrained: false
+  mutate: true
+  num_workers: 0
+  package_name: ConceptClassifier
+  pipeline_name: concept_classifier
+  seed: 1
+  target: concept_class
+  train_file: data/train/train.json
+  truncate: 512
+  valid_file: data/train/valid.json
+  wandb: false
+  warmup_smooth: 3
+  weight_decay: 0.001
+
+
+
+train:
+  batch_size: 40 # Batch size
+  fp16: 1 # Floatpoint 16
+  freeze: 0 # Freezing whole except the final 2 layers
+  gradient_acc_steps: 1 # Gradient accumilation steps
+  lr: 2.0e-05 # Learning rate
+  max_norm: 1 # Max normalization 
+  model_path: artifacts/re_model
+  model_size: nlpaueb/sec-bert-num
+  mutate_test: true
+  mutate_train: true
+  num_epochs: 2
+  overwrite: false
+  relations_mapper: data/train/relations.pkl
+  reload: false
+  train_data: data/train/df_train.json
+  update_ext: false
+  use_pretrained_blanks: 0
+  valid_data: data/train/df_valid.json
+  weight_decay: 0.0001
+  weight_loss: false
+
+train_preprocess:
+  inverse: true
+  output_dir: data/train/
+  relations_mapper: data/train/relations.pkl
+  stage: train

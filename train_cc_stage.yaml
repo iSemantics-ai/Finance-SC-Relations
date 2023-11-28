@@ -1,0 +1,32 @@
+# Note - currently the concept classifier training via dvc is not working, use the notebook instead
+
+  train_cc:
+      cmd: python src/stages/sc_train.py
+      deps:
+      - data/train/train.json      
+      - data/train/valid.json
+      - src/stages/sc_train.py
+      - src/sc_classifier/trainer.py
+      params:
+      - base
+      - concept_train
+      plots:
+      - metrics/cc_metrics/cc_train_loss.csv:
+            x: epoch
+            y: sc_train_loss
+            title: sc_train_loss
+
+      - metrics/cc_metrics/cc_train_f1.csv:
+            x: epoch
+            y: sc_train_f1
+            title: sc_train_f1
+
+      - metrics/cc_metrics/cc_val_f1.csv:
+            x: epoch
+            y: sc_val_f1
+            title: sc_val_f1
+
+      metrics:
+        - metrics/cc_metrics/cc_valid_metrics.json
+      outs:
+        - artifacts/cc_model

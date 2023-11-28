@@ -1,0 +1,155 @@
+stages:
+  load_data:
+      cmd: python src/stages/load_data.py --config params.yaml
+      deps:
+      - src/stages/load_data.py
+      params:
+      - base.nlp
+      - load_data
+      outs:
+      - data/raw/relations_training_data.json
+  data_split:
+      cmd: python src/stages/data_split.py --config params.yaml
+      deps:
+      - src/stages/data_split.py
+      - data/raw/relations_training_data.json
+      - src/utils/preprocess.py
+      params:
+      - base
+      - data_split
+      - load_data.output_dir
+      outs:
+      - data/train/train.json
+      - data/train/valid.json
+      - data/train/distributions.md
+  train_preprocess:
+      cmd: python src/stages/train_preprocess.py --config params.yaml
+      deps:
+      - src/stages/train_preprocess.py
+      - data/train/train.json
+      - data/train/valid.json
+      params:
+      - base
+      - train_preprocess
+      outs:
+      - data/train/relations.pkl
+      - data/train/df_train.json      
+      - data/train/df_valid.json
+  train:
+      cmd: python src/stages/train.py --config params.yaml
+      deps:
+      - data/train/relations.pkl
+      - data/train/df_train.json      
+      - data/train/df_valid.json
+      - src/stages/train.py
+      - src/relation_extraction/trainer.py
+      params:
+      - base
+      - train
+      plots:
+      - metrics/valid_roc_auc.png
+
+      - metrics/train_losses.csv:
+          x: epoch
+          y: train_losses
+          title: train_losses
+
+      - metrics/train_accuracy.csv:
+          x: epoch
+          y: train_accuracy
+          title: train_accuracy
+          
+      - metrics/valid_accuracy.csv:
+          x: epoch
+          y: valid_accuracy
+          title: valid_accuracy
+          
+
+      - metrics/valid_f1_macro.csv:
+          x: epoch
+          y: valid_f1_macro
+          title: valid_f1_macro
+          
+      - metrics/valid_precision.csv:
+          x: epoch
+          y: valid_precision
+          title: valid_precision
+          
+          
+      - metrics/valid_recall.csv:
+          x: epoch
+          y: valid_recall
+          title: valid_recall
+          
+      - metrics/customer_f1_score.csv:
+          x: epoch
+          y: customer_f1_score
+          title: customer_f1_score
+          
+      - metrics/supplier_f1_score.csv:
+          x: epoch
+          y: supplier_f1_score
+          title: supplier_f1_score
+          
+      - metrics/other_f1_score.csv:
+          x: epoch
+          y: other_f1_score
+          title: other_f1_score
+          
+      outs: 
+      - artifacts/re_model
+  evaluate:
+      cmd: python src/stages/evaluate.py --config params.yaml 
+      deps: 
+      - artifacts/re_model
+      - src/stages/evaluate.py
+      - src/relation_extraction/infer.py
+      params:
+      - base
+      - train
+      plots:
+      - metrics/test_confusion.png
+      - metrics/dev_confusion.png
+      metrics:
+      - metrics/test_metrics.json
+      - metrics/dev_metrics.json
+      outs:
+      - metrics/test_classification_report.md
+      - metrics/test_errors.xlsx
+      - metrics/test_inconsistent_directions.xlsx
+      - metrics/dev_classification_report.md
+      - metrics/dev_errors.xlsx
+      - metrics/dev_inconsistent_directions.xlsx
+      
+
+  train_sc:
+      cmd: python src/stages/sc_train.py
+      deps:
+      - data/train/train.json      
+      - data/train/valid.json
+      - src/stages/sc_train.py
+      - src/sc_classifier/trainer.py
+      params:
+      - base
+      - sc_train
+      plots:
+      - sc_metrics/sc_train_loss.csv:
+            x: epoch
+            y: sc_train_loss
+            title: sc_train_loss
+
+      - sc_metrics/sc_train_f1.csv:
+            x: epoch
+            y: sc_train_f1
+            title: sc_train_f1
+
+      - sc_metrics/sc_val_f1.csv:
+            x: epoch
+            y: sc_val_f1
+            title: sc_val_f1
+
+      metrics:
+        - sc_metrics/sc_valid_metrics.json
+      outs:
+        - artifacts/sc_model
+

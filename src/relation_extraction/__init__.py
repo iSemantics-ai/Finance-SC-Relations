@@ -1,0 +1,1 @@
+from .infer import infer_from_trained

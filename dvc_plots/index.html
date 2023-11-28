@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>DVC Plot</title>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+    
+    <style>
+        table {
+            border-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id = "metrics_train_losses_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"train_losses": "0.402501311376452", "epoch": "0", "rev": "workspace"}, {"train_losses": "0.1698216424481824", "epoch": "1", "rev": "workspace"}]}, "title": "train_losses", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "train_losses", "type": "quantitative", "title": "train_losses", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "train_losses", "title": "train_losses", "type": "quantitative"}]}, "transform": [{"loess": "train_losses", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "train_losses", "type": "quantitative", "title": "train_losses", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "train_losses", "title": "train_losses", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "train_losses", "type": "quantitative", "title": "train_losses", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#metrics_train_losses_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "metrics_train_accuracy_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"train_accuracy": "0.8580128205128206", "epoch": "0", "rev": "workspace"}, {"train_accuracy": "0.948397435897436", "epoch": "1", "rev": "workspace"}]}, "title": "train_accuracy", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "train_accuracy", "type": "quantitative", "title": "train_accuracy", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "train_accuracy", "title": "train_accuracy", "type": "quantitative"}]}, "transform": [{"loess": "train_accuracy", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "train_accuracy", "type": "quantitative", "title": "train_accuracy", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "train_accuracy", "title": "train_accuracy", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "train_accuracy", "type": "quantitative", "title": "train_accuracy", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#metrics_train_accuracy_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "metrics_valid_accuracy_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"valid_accuracy": "0.9335", "epoch": "0", "rev": "workspace"}, {"valid_accuracy": "0.9391", "epoch": "1", "rev": "workspace"}]}, "title": "valid_accuracy", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "valid_accuracy", "type": "quantitative", "title": "valid_accuracy", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "valid_accuracy", "title": "valid_accuracy", "type": "quantitative"}]}, "transform": [{"loess": "valid_accuracy", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "valid_accuracy", "type": "quantitative", "title": "valid_accuracy", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "valid_accuracy", "title": "valid_accuracy", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "valid_accuracy", "type": "quantitative", "title": "valid_accuracy", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#metrics_valid_accuracy_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "metrics_valid_f1_macro_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"valid_f1_macro": "0.9323", "epoch": "0", "rev": "workspace"}, {"valid_f1_macro": "0.9386", "epoch": "1", "rev": "workspace"}]}, "title": "valid_f1_macro", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "valid_f1_macro", "type": "quantitative", "title": "valid_f1_macro", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "valid_f1_macro", "title": "valid_f1_macro", "type": "quantitative"}]}, "transform": [{"loess": "valid_f1_macro", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "valid_f1_macro", "type": "quantitative", "title": "valid_f1_macro", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "valid_f1_macro", "title": "valid_f1_macro", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "valid_f1_macro", "type": "quantitative", "title": "valid_f1_macro", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#metrics_valid_f1_macro_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "metrics_valid_precision_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"valid_precision": "0.9317", "epoch": "0", "rev": "workspace"}, {"valid_precision": "0.938", "epoch": "1", "rev": "workspace"}]}, "title": "valid_precision", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "valid_precision", "type": "quantitative", "title": "valid_precision", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "valid_precision", "title": "valid_precision", "type": "quantitative"}]}, "transform": [{"loess": "valid_precision", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "valid_precision", "type": "quantitative", "title": "valid_precision", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "valid_precision", "title": "valid_precision", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "valid_precision", "type": "quantitative", "title": "valid_precision", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#metrics_valid_precision_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "metrics_valid_recall_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"valid_recall": "0.9332", "epoch": "0", "rev": "workspace"}, {"valid_recall": "0.9394", "epoch": "1", "rev": "workspace"}]}, "title": "valid_recall", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "valid_recall", "type": "quantitative", "title": "valid_recall", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "valid_recall", "title": "valid_recall", "type": "quantitative"}]}, "transform": [{"loess": "valid_recall", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "valid_recall", "type": "quantitative", "title": "valid_recall", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "valid_recall", "title": "valid_recall", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "valid_recall", "type": "quantitative", "title": "valid_recall", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#metrics_valid_recall_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "metrics_customer_f1_score_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"customer_f1_score": "0.9251", "epoch": "0", "rev": "workspace"}, {"customer_f1_score": "0.9372", "epoch": "1", "rev": "workspace"}]}, "title": "customer_f1_score", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "customer_f1_score", "type": "quantitative", "title": "customer_f1_score", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "customer_f1_score", "title": "customer_f1_score", "type": "quantitative"}]}, "transform": [{"loess": "customer_f1_score", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "customer_f1_score", "type": "quantitative", "title": "customer_f1_score", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "customer_f1_score", "title": "customer_f1_score", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "customer_f1_score", "type": "quantitative", "title": "customer_f1_score", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#metrics_customer_f1_score_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "metrics_supplier_f1_score_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"supplier_f1_score": "0.9194", "epoch": "0", "rev": "workspace"}, {"supplier_f1_score": "0.9306", "epoch": "1", "rev": "workspace"}]}, "title": "supplier_f1_score", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "supplier_f1_score", "type": "quantitative", "title": "supplier_f1_score", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "supplier_f1_score", "title": "supplier_f1_score", "type": "quantitative"}]}, "transform": [{"loess": "supplier_f1_score", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "supplier_f1_score", "type": "quantitative", "title": "supplier_f1_score", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "supplier_f1_score", "title": "supplier_f1_score", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "supplier_f1_score", "type": "quantitative", "title": "supplier_f1_score", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#metrics_supplier_f1_score_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "metrics_other_f1_score_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"other_f1_score": "0.9525", "epoch": "0", "rev": "workspace"}, {"other_f1_score": "0.9479", "epoch": "1", "rev": "workspace"}]}, "title": "other_f1_score", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "other_f1_score", "type": "quantitative", "title": "other_f1_score", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "other_f1_score", "title": "other_f1_score", "type": "quantitative"}]}, "transform": [{"loess": "other_f1_score", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "other_f1_score", "type": "quantitative", "title": "other_f1_score", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "other_f1_score", "title": "other_f1_score", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "other_f1_score", "type": "quantitative", "title": "other_f1_score", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#metrics_other_f1_score_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "sc_metrics_sc_train_loss_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"epoch": "0", "sc_train_loss": "0.29163220524787903", "rev": "workspace"}, {"epoch": "1", "sc_train_loss": "0.0731506198644638", "rev": "workspace"}, {"epoch": "2", "sc_train_loss": "0.024776022881269455", "rev": "workspace"}, {"epoch": "3", "sc_train_loss": "0.01463655848056078", "rev": "workspace"}]}, "title": "sc_train_loss", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "sc_train_loss", "type": "quantitative", "title": "sc_train_loss", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "sc_train_loss", "title": "sc_train_loss", "type": "quantitative"}]}, "transform": [{"loess": "sc_train_loss", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "sc_train_loss", "type": "quantitative", "title": "sc_train_loss", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "sc_train_loss", "title": "sc_train_loss", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "sc_train_loss", "type": "quantitative", "title": "sc_train_loss", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#sc_metrics_sc_train_loss_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "sc_metrics_sc_train_f1_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"epoch": "0", "sc_train_f1": "0.8581518747661828", "rev": "workspace"}, {"epoch": "1", "sc_train_f1": "0.9745349489635637", "rev": "workspace"}, {"epoch": "2", "sc_train_f1": "0.9912448435356631", "rev": "workspace"}, {"epoch": "3", "sc_train_f1": "0.9946493885441077", "rev": "workspace"}]}, "title": "sc_train_f1", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "sc_train_f1", "type": "quantitative", "title": "sc_train_f1", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "sc_train_f1", "title": "sc_train_f1", "type": "quantitative"}]}, "transform": [{"loess": "sc_train_f1", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "sc_train_f1", "type": "quantitative", "title": "sc_train_f1", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "sc_train_f1", "title": "sc_train_f1", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "sc_train_f1", "type": "quantitative", "title": "sc_train_f1", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#sc_metrics_sc_train_f1_csv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "sc_metrics_sc_val_f1_csv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"epoch": "0", "sc_val_f1": "0.9540977071913866", "rev": "workspace"}, {"epoch": "1", "sc_val_f1": "0.9637308093408841", "rev": "workspace"}, {"epoch": "2", "sc_val_f1": "0.9642729915815004", "rev": "workspace"}, {"epoch": "3", "sc_val_f1": "0.9643237691287191", "rev": "workspace"}]}, "title": "sc_val_f1", "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "layer": [{"mark": "line", "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "sc_val_f1", "type": "quantitative", "title": "sc_val_f1", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "sc_val_f1", "title": "sc_val_f1", "type": "quantitative"}]}, "transform": [{"loess": "sc_val_f1", "on": "epoch", "groupby": ["rev", "filename", "field", "filename::field"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"field": "sc_val_f1", "type": "quantitative", "title": "sc_val_f1", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}, "tooltip": [{"field": "epoch", "title": "epoch", "type": "quantitative"}, {"field": "sc_val_f1", "title": "sc_val_f1", "type": "quantitative"}]}}, {"mark": {"type": "circle", "size": 10, "tooltip": {"content": "encoding"}}, "encoding": {"x": {"aggregate": "max", "field": "epoch", "type": "quantitative", "title": "epoch"}, "y": {"aggregate": {"argmax": "epoch"}, "field": "sc_val_f1", "type": "quantitative", "title": "sc_val_f1", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}]};
+            vegaEmbed('#sc_metrics_sc_val_f1_csv', spec);
+        </script>
+    </div>
+    
+
+        <div
+            id="metrics_dev_confusion_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>metrics/dev_confusion.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_metrics_dev_confusion.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="metrics_test_confusion_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>metrics/test_confusion.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_metrics_test_confusion.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="metrics_valid_roc_auc_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>metrics/valid_roc_auc.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_metrics_valid_roc_auc.png">
+                </div>
+                
+        </div>
+</body>
+</html>

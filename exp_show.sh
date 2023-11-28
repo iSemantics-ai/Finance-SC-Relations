@@ -1,0 +1,1 @@
+dvc exp show --drop 'base|load_data|train_preprocess|data_split|metrics.metrics.json|accuracy|f1' --all-commits --only-changed
