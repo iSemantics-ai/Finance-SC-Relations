@@ -110,7 +110,6 @@ def preprocess_custom_data(args):
         relations_mapper = load_or_create_relations_mapper(
             args.train_preprocess.relations_mapper, df, file_name
         )
-
         # Assign numerical IDs to relations
         df["relations_id"] = df.progress_apply(
             lambda x: relations_mapper.rel2idx[x["relations"]], axis=1

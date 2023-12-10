@@ -411,7 +411,10 @@ def split_data(data:pd.DataFrame,
     - stratify_by (List[str]): A list of column names to use for stratification
     - val_size (float): The proportion of the data to use for validation (default: 0.2)
     - random_state (int): The random seed to use for reproducibility (default: None)
-
+	
+    TODO: Give an I/O Example
+    data = [sent, idx, e1, e2, rel, label, concept]
+    
     @return
     -------
     - pd.DataFrame, pd.DataFrame: The train and validation DataFrames
@@ -420,10 +423,10 @@ def split_data(data:pd.DataFrame,
     # Group the data by the index column and the stratification columns, and convert to a DataFrame
     meta_data = pd.DataFrame(
         data.groupby(index_col)\
-        .apply(lambda x : {**{ index_col:x[index_col].iloc[0]},
+        .apply(lambda x : {**{index_col:x[index_col].iloc[0]},
                            **{z:x[z].iloc[0] for z in stratify_by}})\
         .to_list()
-    )
+    ) # idx: SC_Label, Concept
 
     # Split the meta data into train and validation sets using stratified sampling
     train, valid = train_test_split(meta_data,
