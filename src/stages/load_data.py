@@ -54,8 +54,12 @@ def preprocess_data(data, config):
     # Generate unique IDs for unique strings in the 'idx' column
     if 'idx' not in data.columns:
         unique_ids, unique_strings = pd.factorize(data['idx'])
-        data['idx'] = unique_ids
-        np.save(src_dir / "data/train/row_ids", unique_strings)
+        logger.info("add idx")
+        data.loc[:, 'idx'] = unique_ids
+    else:
+        unique_ids, unique_strings = pd.factorize(data['idx'])
+        data.loc[:, 'idx'] = unique_ids
+    np.save(src_dir / "data/train/row_ids", unique_strings)
 
     return data
 
