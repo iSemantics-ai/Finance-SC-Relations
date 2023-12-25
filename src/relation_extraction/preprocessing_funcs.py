@@ -159,7 +159,7 @@ def balance_relations(df, main_relations, index_col):
     - df (DataFrame): Input DataFrame.
     - main_relations (str): Relations with reflection property
     - 
-
+	TODO: Comment the code lines
     @returns:
     --------
     - DataFrame: DataFrame with balanced relations.

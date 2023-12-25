@@ -50,12 +50,12 @@ class RE_Transformers(PreTrainedModel):
         """
         sequence_output = self.model(
             input_ids, attention_mask=attention_mask
-        ).last_hidden_state
+        ).last_hidden_state # Size N, L, Hidden_dim
          ### two heads: LM and blanks ###
-        blankv1v2 = sequence_output[:, e1_e2_start, :]
+        blankv1v2 = sequence_output[:, e1_e2_start, :] # out N, 2, 2, hidden_dim
         buffer = []
         for i in range(blankv1v2.shape[0]):  # iterate batch & collect
-            v1v2 = blankv1v2[i, i, :, :]
+            v1v2 = blankv1v2[i, i, :, :] # (2, hidden_size)
             v1v2 = torch.cat((v1v2[0], v1v2[1]))
             buffer.append(v1v2)
         del blankv1v2

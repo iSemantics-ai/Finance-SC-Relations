@@ -98,12 +98,12 @@ def train_and_fit(args):
         scheduler=None,
         load_best=args["update_ext"],
     )
-    # #
+    # 
     # Based on the certain parameters we pick the reuqired cost function
     # Available loss functions:
     # * Weighted Loss
     # * Noise Aware Loss
-    # # 
+    #
     if args.get('weight_loss'):
         weights =  weights.cuda() if cuda else weights
         criterion = nn.CrossEntropyLoss(ignore_index=-1, weight=weights)
