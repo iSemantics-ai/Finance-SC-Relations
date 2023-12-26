@@ -25,7 +25,7 @@ def expected_aliases():
                     ('Fujitsu Limited', 'Fujitsu')],
                   ]
 def test_org_grouping(spacy_loader, check_data, expected_aliases):
-    spans , groups, aliases = spacy_loader.predictor(check_data) 
+    sents, spans , groups, aliases = spacy_loader.predictor(check_data) 
     for i, alias_group in enumerate(aliases):
         for target, alias in alias_group:
             assert (target, alias) in expected_aliases[i]
