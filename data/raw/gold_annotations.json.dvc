@@ -1,0 +1,5 @@
+outs:
+- md5: 4930a7bd883ae7c386e8d39a32051a5a
+  size: 34992058
+  hash: md5
+  path: gold_annotations.json
