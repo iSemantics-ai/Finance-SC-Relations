@@ -26,7 +26,7 @@ data_split:
   - Label
   val_size: 0.2
 evaluate:
-  dataset: data/raw/gold_eval_ensemble.json.out
+  dataset: data/raw/gold_eval_ensemble.json
   entity_1: Filer
   entity_2: Company
   mutate: true
@@ -111,13 +111,13 @@ train:
   freeze: 0 # Freezing whole except the final 2 layers
   gradient_acc_steps: 1 # Gradient accumilation steps
   lr: 2.0e-05 # Learning rate
-  max_norm: 1 # Max normalization 
+  max_norm: 1 # Max normalization
   model_path: artifacts/re_model
   model_size: nlpaueb/sec-bert-num
-  mutate_test: true
-  mutate_train: true
-  num_epochs: 2
-  overwrite: false
+  mutate_test: true # replacing ORG names with org-$random_int
+  mutate_train: true # replacing ORG names with org-$random_int
+  num_epochs: 2 # training epochs
+  overwrite: false # only save model when performance increase on eval-set
   relations_mapper: data/train/relations.pkl
   reload: false
   train_data: data/train/df_train.json
