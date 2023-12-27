@@ -362,6 +362,7 @@ def load_dataloaders(args, shuffle):
     src_dir = Path(args.get('src_dir', './'))
 
     tokenizer_path = src_dir / "artifacts/assets/{}_tokenizer.pkl".format(model)
+    tokenizer_path.parent.mkdir(exist_ok=True, parents=True)
 
     if os.path.isfile(tokenizer_path):
         tokenizer = load_pickle(tokenizer_path)

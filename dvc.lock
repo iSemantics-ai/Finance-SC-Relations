@@ -5,8 +5,8 @@ stages:
     deps:
     - path: src/stages/load_data.py
       hash: md5
-      md5: 7c9a3215e0c56c9d6829ee38b6272578
-      size: 3278
+      md5: e989dff0d73d1f4ec3c8ddaddc16206f
+      size: 3717
     params:
       params.yaml:
         base.nlp: en_core_web_trf
@@ -35,8 +35,8 @@ stages:
       size: 4283
     - path: src/utils/preprocess.py
       hash: md5
-      md5: 1142f4f0b37285f34cf25100d94100bb
-      size: 18518
+      md5: cb6003a19e3fbf04de38cae3781735b6
+      size: 18630
     params:
       params.yaml:
         base:
@@ -93,8 +93,8 @@ stages:
       size: 4968687
     - path: src/stages/train_preprocess.py
       hash: md5
-      md5: 86a415c2f40e908f60fa29231e0b0b35
-      size: 1335
+      md5: 0a76dfec6cc5743c5f22a30cfd386f72
+      size: 1334
     params:
       params.yaml:
         base:
@@ -120,39 +120,39 @@ stages:
     outs:
     - path: data/train/df_train.json
       hash: md5
-      md5: 9b43a394af6f885ca4bb6a64ee157eb4
+      md5: 1132fdd9c416eee9c6e42d632235aef4
       size: 27418011
     - path: data/train/df_valid.json
       hash: md5
-      md5: 906376148ad914a9bba4a76748f3f796
+      md5: a749e9509e0eff3df0e649c623102227
       size: 7030365
     - path: data/train/relations.pkl
       hash: md5
-      md5: ac311efcf39ee9e7d07310b7f1cd520e
+      md5: cf2bcd4330b41de7fb87bfa290c016c3
       size: 177
   train:
     cmd: python src/stages/train.py --config params.yaml
     deps:
     - path: data/train/df_train.json
       hash: md5
-      md5: 9b43a394af6f885ca4bb6a64ee157eb4
+      md5: 1132fdd9c416eee9c6e42d632235aef4
       size: 27418011
     - path: data/train/df_valid.json
       hash: md5
-      md5: 906376148ad914a9bba4a76748f3f796
+      md5: a749e9509e0eff3df0e649c623102227
       size: 7030365
     - path: data/train/relations.pkl
       hash: md5
-      md5: ac311efcf39ee9e7d07310b7f1cd520e
+      md5: cf2bcd4330b41de7fb87bfa290c016c3
       size: 177
     - path: src/relation_extraction/trainer.py
       hash: md5
-      md5: 3b49aae8568cd0397a27a66c730907c7
-      size: 11528
+      md5: 052ec5faed647dd8052338f45b8353ab
+      size: 11933
     - path: src/stages/train.py
       hash: md5
-      md5: 973a6740e8d13031f05f7691c2fc23c1
-      size: 962
+      md5: b5462ff809c81328697268726deafd4e
+      size: 955
     params:
       params.yaml:
         base:
@@ -194,64 +194,64 @@ stages:
     outs:
     - path: artifacts/re_model
       hash: md5
-      md5: a45b0938e3d74943ebd958ac4833eedd.dir
-      size: 437372729
-      nfiles: 8
+      md5: b9906ba25ee74a534b589d3ebc275e78.dir
+      size: 437368329
+      nfiles: 7
     - path: metrics/customer_f1_score.csv
       hash: md5
-      md5: 864fd35780d71d6fd463ad8e085fa6b8
-      size: 42
+      md5: e0e54aa20a1e666337b40d3b5d30277f
+      size: 41
     - path: metrics/other_f1_score.csv
       hash: md5
-      md5: 4cfe745f07ce1301d87f0b4983bee0ad
+      md5: 30524eaadc6d640af721723ec4a26de0
       size: 39
     - path: metrics/supplier_f1_score.csv
       hash: md5
-      md5: 6da08c3e3291fd5fc5b11bffa2e5df45
+      md5: d589f5e94b31edb6ed48599f5ab1e1b5
       size: 42
     - path: metrics/train_accuracy.csv
       hash: md5
-      md5: 2ec9d0b1780ad9cdfdde0c7aa34dd216
+      md5: 54e999433f70946aca69babb1dbdd285
       size: 63
     - path: metrics/train_losses.csv
       hash: md5
-      md5: ae7aba37b5448dac2426544865a40585
-      size: 63
+      md5: 45d67e6b76a572e48e1dc941269d38ec
+      size: 62
     - path: metrics/valid_accuracy.csv
       hash: md5
-      md5: 9ac946f0ad6cd7c94a537f90fcd6993c
-      size: 39
+      md5: 0019617fe76d84c1fa4b0b6b74ccd732
+      size: 38
     - path: metrics/valid_f1_macro.csv
       hash: md5
-      md5: 46cc1fc8fd0e0feff2e586600c5f4b56
+      md5: 1f4bf7dd3c9e26018c2d4fac40c70014
       size: 39
     - path: metrics/valid_precision.csv
       hash: md5
-      md5: 57020dc95c35999142b5f66c48fe5e83
+      md5: 5e1c09df4a5b13be717650a6ccbd0443
       size: 40
     - path: metrics/valid_recall.csv
       hash: md5
-      md5: 2565a22fc26383fd969f67a55da156f8
+      md5: dd09379ea31f62d60741090c866e52f4
       size: 37
     - path: metrics/valid_roc_auc.png
       hash: md5
-      md5: f4a73bb7cccedfe09e8e644db2332ece
-      size: 63214
+      md5: c97fb3d96f6171d5b20e778262d83f4d
+      size: 63406
   evaluate:
     cmd: python src/stages/evaluate.py --config params.yaml
     deps:
     - path: artifacts/re_model
       hash: md5
-      md5: a45b0938e3d74943ebd958ac4833eedd.dir
-      size: 437372729
-      nfiles: 8
+      md5: b9906ba25ee74a534b589d3ebc275e78.dir
+      size: 437368329
+      nfiles: 7
     - path: src/relation_extraction/infer.py
       hash: md5
       md5: 27bff04f84d89cd41d25505eb979fb30
       size: 21308
     - path: src/stages/evaluate.py
       hash: md5
-      md5: c630eaaa50efc1e2b7f9f88a7e3133d9
+      md5: 08bd2e497ad9352ca6f93354269e38a5
       size: 9227
     params:
       params.yaml:
@@ -294,44 +294,44 @@ stages:
     outs:
     - path: metrics/dev_classification_report.md
       hash: md5
-      md5: ef70b58ff2f164484fd2b5a7122b4b51
-      size: 599
+      md5: d7135f34cc76ea7d87d90af5e222f9aa
+      size: 593
     - path: metrics/dev_confusion.png
       hash: md5
-      md5: ab9362968382ea0c9c3b935fac5add22
-      size: 23210
+      md5: 095c8f37bc8870ee485984e41a12ad22
+      size: 22363
     - path: metrics/dev_errors.xlsx
       hash: md5
-      md5: 23d7094d88ddd46eb876a057d46767af
-      size: 135064
+      md5: f173273a23592bdff84edb2f15665549
+      size: 142547
     - path: metrics/dev_inconsistent_directions.xlsx
       hash: md5
-      md5: f06991ef37a1ebc50ebdea5d91b90d4e
-      size: 33224
+      md5: 6fc909713df232a07c3f0d6a9187368e
+      size: 25982
     - path: metrics/dev_metrics.json
       hash: md5
-      md5: ac1a41b2e628e3d1fe3083421ee66078
+      md5: bf418552f57ff9a9ffe50ce68145d3c8
       size: 114
     - path: metrics/test_classification_report.md
       hash: md5
-      md5: da40d984947edb8594d8e5efe2480575
+      md5: 7d73676f0d71e4a69e2296a5883876cd
       size: 581
     - path: metrics/test_confusion.png
       hash: md5
-      md5: 9b983d7f7343536786daa962c824e0e6
-      size: 26082
+      md5: 6117d90b150dff1f48c24d43f6a83970
+      size: 26051
     - path: metrics/test_errors.xlsx
       hash: md5
-      md5: ddb393a06553f06ddaa1dfe553ece95d
-      size: 36999
+      md5: ef3b57c36d2d3f1a399461bf8c4538e9
+      size: 33068
     - path: metrics/test_inconsistent_directions.xlsx
       hash: md5
-      md5: 43074f87f89fd378516de618f524d962
-      size: 13218
+      md5: e1b7842feae3c7347e58817ed2e88216
+      size: 11213
     - path: metrics/test_metrics.json
       hash: md5
-      md5: a0b48d76d351e93dcd5594997c3ebd24
-      size: 118
+      md5: 7bf2686ce8a831d4ecd9e7a66de87b99
+      size: 117
   train_sc:
     cmd: python src/stages/sc_train.py
     deps:
