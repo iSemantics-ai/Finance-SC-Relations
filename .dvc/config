@@ -1,0 +1,5 @@
+[core]
+    remote = inferess-dvc
+    autostage = true
+['remote "inferess-dvc"']
+    url = s3://ecomap-dl-pipeline/dvc-exp/
