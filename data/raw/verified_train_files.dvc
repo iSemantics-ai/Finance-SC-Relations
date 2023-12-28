@@ -1,0 +1,6 @@
+outs:
+- md5: a2b41a29dc27a4af0f4f8bece93554f1.dir
+  size: 1557954
+  nfiles: 5
+  hash: md5
+  path: verified_train_files

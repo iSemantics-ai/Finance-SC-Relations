@@ -1,13 +1,20 @@
 all_0:
   dir: /notebooks/inferess-relation-extraction/data/raw/verified_train_files/llm_relations_other_from_label_0_v2_3.xlsx
+  #comment: Annotated from the 5k sentence level data 
 all_1:
   dir: /notebooks/inferess-relation-extraction/data/raw/verified_train_files/llm_relations_all_label_1_v2_3.xlsx
+   # comment: Annotated from the 5k sentence level data 
 all_other:
   dir: /notebooks/inferess-relation-extraction/data/raw/verified_train_files/llm_relations_other_relation_v2_3.xlsx
+  #comment: Annotated from the 5k sentence level data 
 # huge_0_complex has lot of noise in it. Not using unless we verify the data
 # huge_0_complex:
 #   dir: /notebooks/inferess-relation-extraction/data/raw/huge_other_train_complex_sents.xlsx
+
 huge_1:
   dir: /notebooks/inferess-relation-extraction/data/raw/verified_train_files/huge_train_llm_aligned_v2_3_0_1300.xlsx
+ # comment: Annotated from document level data
+
 huge_1_complex:
   dir: /notebooks/inferess-relation-extraction/data/raw/verified_train_files/huge_train_complex_sents_llm_v2_3.xlsx
+  #comment: Annotated from document level data, Complex examples refer to multi-concept sentences
