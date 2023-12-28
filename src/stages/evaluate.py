@@ -94,7 +94,7 @@ def evaluate(config_path: Text) -> None:
 
         spacy_loader = SpacyLoader(lm=None,
                                    require_gpu = True,
-                                   entity_matcher= str(src_dir / "artifacts/matcher_model"),
+                                   entity_matcher= "sentence-transformers/all-MiniLM-L6-v2",
                                    load_matcher=True)
         group_docs, aliases_docs = spacy_loader.group_ents(docs_container)
         test_data.loc[:, 'org_groups']= group_docs
