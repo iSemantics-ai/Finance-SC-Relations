@@ -4,8 +4,8 @@ Finance-SC-Relations is a project that focuses on extracting supply-chain relati
 ## Usage:
 ### _Clone_
 ```
-git clone https://github.com/ahmedAlaa24494/dl-relation-extraction.git
-cd dl-relation-extraction/
+git clone https://github.com/iSemantics-ai/Finance-SC-Relations.git
+cd Finance-SC-Relations/
 ```
 ---
 ### _Install required packages_
