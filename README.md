@@ -40,14 +40,6 @@ cp aws_cred ~/.aws -r
 
 ### Pull Data and Artifacts with `DVC`
 
-- Connect to the remote storage
-
-```
-dvc remote add -d inferess-dvc s3://ecomap-dl-pipeline/dvc-exp/
-```
-
-- Pull the data
-
 ```
 dvc pull
 ```
