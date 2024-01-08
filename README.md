@@ -32,6 +32,12 @@ mkdir aws_cred
 
 - Upload the credentials into the created path.
 
+- Add the credentials using the AWS CLI
+
+```
+cp aws_cred ~/.aws -r
+```
+
 ### Pull Data and Artifacts with `DVC`
 
 - Connect to the remote storage
