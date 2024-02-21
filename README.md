@@ -2,6 +2,8 @@
 
 Finance-SC-Relations is a project that focuses on extracting supply-chain relations from financial text using Transformer-based models and Large Language Models (LLMs). The project aims to enhance the accuracy and reliability of relation extraction in the supply-chain domain by leveraging the power of transformer-based models.
 
+As an added value, this model can extract a company and its customers from a report and provide this information to investors and stake holders to do analysis or link to different databases using an [Entity Linking Model](https://github.com/iSemantics-ai/Entity-Linking).
+
 ## Usage
 
 ### Clone
